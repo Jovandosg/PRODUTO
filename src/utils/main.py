@@ -41,7 +41,7 @@ def listar_produtos(db: Session = Depends(get_db)):
     repo = ProdutoRepositorySQLAlchemy(db)
     produto_service = ProdutoService(repo)
 
-    produtos = produto_service.listar_produto()
+    produtos = produto_service.listar_produtos()
     return [ProdutoRead(id=p.id, nome=p.nome, preco=p.preco, ativo=p.ativo) for p in produtos]
 
 
@@ -72,7 +72,7 @@ def atualizar_produto(produto_id:int, dados: ProdutoUpdate, db:Session = Depends
     ativo:bool = dados.ativo if dados.ativo is not None else produto_existente.ativo
 
     produto_atualizado = produto_service.atualizar_produto(
-        id_=produto_id,
+        produto_id=produto_id,
         nome=nome,
         preco=preco,
         ativo=ativo

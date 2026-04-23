@@ -13,7 +13,7 @@ class ProdutoDB(Base):
 
     __tablename__ = "produtos"
 
-    id = Column(Integer,, primary_key=True, index=True, autoincrement = True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     nome = Column(String(100), nullable=False)
     preco = Column(Float, nullable=False)
     ativo = Column(Boolean, nullable=False, default=True)

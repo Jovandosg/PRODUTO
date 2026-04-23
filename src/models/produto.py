@@ -6,12 +6,12 @@ class Produto:
     Docstring for Produto
     """
 
-    def __init__(self, id_:int, nome:str, preco:float, ativo:bool = True) -> None:
-        self._id: int = id_
+    def __init__(self, produto_id: int, nome: str, preco: float, ativo: bool = True) -> None:
+        self._id: int = produto_id
         self.nome: str = nome
-        self._preco:float = 0.0
-        self.preco:float = preco 
-        self.ativo:bool = ativo
+        self._preco: float = 0.0
+        self.preco: float = preco
+        self.ativo: bool = ativo
     
     def __str__(self) -> str:
         return f"Produto(id={self._id}, nome={self.nome}, preço={self._preco}, ativo = {self.ativo})"

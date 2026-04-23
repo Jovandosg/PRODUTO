@@ -31,6 +31,7 @@ PRODUTO/
 │   │   └── produto_schemas.py     # Schemas Pydantic (validação e serialização)
 │   ├── services/
 │   │   ├── produto_repo_base.py   # Contrato abstrato do repositório
+│   │   ├── produto_service.py      # Camada de serviço (regras e orquestração)
 │   │   └── produto_repo_sqlalchemy.py  # Implementação com SQLAlchemy
 │   └── utils/
 │       ├── database.py            # Configuração da engine e sessão SQLAlchemy
@@ -90,6 +91,7 @@ Após iniciar o servidor, acesse:
 | `GET` | `/produtos/{id}` | Retorna um produto pelo ID |
 | `POST` | `/produtos` | Cria um novo produto |
 | `PUT` | `/produtos/{id}` | Atualiza um produto existente |
+| `DELETE` | `/produtos/{id}` | Remove um produto |
 
 ### Exemplo de payload (POST /produtos)
 
