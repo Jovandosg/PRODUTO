@@ -25,6 +25,7 @@ PRODUTO/
 ├── requirements.txt               # Dependências do projeto
 ├── data/                          # Banco de dados SQLite gerado em runtime
 ├── src/
+│   ├── main.py                    # Entrypoint ASGI (reexporta `app` para o uvicorn)
 │   ├── models/
 │   │   ├── produto.py             # Modelo de domínio (regras de negócio)
 │   │   ├── produto_db.py          # Modelo ORM (mapeamento para banco de dados)
@@ -56,16 +57,18 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
+Com o ambiente virtual ativado, os próximos comandos seguem o padrão `python -m ...`.
+
 ### 3. Instale as dependências
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ### 4. Inicie a API
 
 ```bash
-uvicorn src.utils.main:app --reload
+python -m uvicorn src.main:app --reload
 ```
 
 A API estará disponível em: [http://localhost:8000](http://localhost:8000)
@@ -137,6 +140,8 @@ Requisição HTTP
   SQLite via SQLAlchemy
 ```
 
+Observação: o comando de execução usa `src.main:app`, que importa e expõe o mesmo `app` definido em `src/utils/main.py`.
+
 **Modelos:**
 - `Produto` — domínio puro com validações (preço não negativo, desconto, ativar/desativar)
 - `ProdutoDB` — mapeamento ORM para a tabela `produtos`
@@ -149,7 +154,7 @@ Requisição HTTP
 Para testar a classe de domínio isolada:
 
 ```bash
-./main.py
+python main.py
 # Saída: O produto é Livro e o preco é 10.0
 ```
 
